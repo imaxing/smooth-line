@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/use-mouse-event/dist/index.umd.js"></script>
+    <title>测试绘制</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #canvas {
+        background: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <script type="module">
+      import SmoothLine from "./dist/index.esm.js";
+
+      const canvas = document.getElementById("canvas");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const smoothLineInstance = new SmoothLine({
+        canvas,
+        color: "#f2f2f2",
+      });
+
+      useMouseEvent({
+        el: canvas,
+        onStart: (e) => {
+          smoothLineInstance.start({
+            x: e.touches ? e.touches[0].clientX : e.offsetX,
+            y: e.touches ? e.touches[0].clientY : e.offsetY,
+            touches: e.touches,
+            t: Date.now(),
+          });
+        },
+        onMove: (e) => {
+          smoothLineInstance.draw({
+            x: e.touches ? e.touches[0].clientX : e.offsetX,
+            y: e.touches ? e.touches[0].clientY : e.offsetY,
+            touches: e.touches,
+            t: Date.now(),
+          });
+        },
+        onEnd: smoothLineInstance.end,
+      });
+    </script>
+  </body>
+</html>

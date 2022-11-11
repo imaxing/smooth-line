@@ -1,0 +1,31 @@
+{
+  "name": "smooth-line",
+  "version": "1.0.1",
+  "main": "dist/index.esm.js",
+  "module": "dist/index.esm.js",
+  "browser": "dist/index.umd.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "rollup": "^1.29.0",
+    "rollup-plugin-terser": "7.0.2"
+  },
+  "keywords": [
+    "smooth line",
+    "canvas draw line",
+    "canvas smooth line",
+    "canvas 笔锋 签名",
+    "canvse 签名绘制"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "files": [
+    "dist/index.esm.js",
+    "dist/index.umd.js",
+    "package.json",
+    "README.md"
+  ]
+}
