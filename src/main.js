@@ -5,16 +5,16 @@ export default class SmoothLine {
     if (!options.canvas) return;
     this.canvas = options.canvas;
     this.scale = options.scale || window.devicePixelRatio || 1;
-    this.color = options.color;
+    this.color = options.color || "#000000";
     this.openSmooth = options.openSmooth || true;
-    this.minWidth = options.minWidth || 2;
+    this.minWidth = options.minWidth || 3;
     this.maxWidth = options.maxWidth || 6;
     this.minSpeed = options.minSpeed || 1.5;
     this.maxWidthDiffRate = options.maxWidthDiffRate || 20;
     this.maxHistoryLength = options.maxHistoryLength || 20;
     this.points = [];
     this.end = () => (this.points = []);
-
+    this.start = (e) => this.initPoint(e);
     this.context = (() => {
       const { top, height, width } = this.canvas.getBoundingClientRect();
       this.top = top;
@@ -30,10 +30,6 @@ export default class SmoothLine {
 
       return ctx;
     })();
-  }
-
-  start(e) {
-    this.initPoint(e);
   }
 
   draw(e) {
