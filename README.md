@@ -10,38 +10,36 @@ npm i smooth-line
 
 #### Usage
 
-传入 canvas 节点, 将 canvas 绑定的摁下/移动/抬起事件分别与绘制逻辑对应即可
+
 
 ```js
 import SmoothLine from "smooth-line";
+import useMouseEvent from "use-mouse-event";
 
 const canvas = document.getElementById("canvas");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-const smoothLineInstance = new SmoothLine({
-  canvas,
-  color: "#f2f2f2",
-});
+
+// 传入 canvas 节点, 将 canvas 绑定的摁下/移动/抬起事件分别与绘制逻辑对应即可
+const instance = new SmoothLine({ canvas });
 
 useMouseEvent({
   el: canvas,
   onStart: (e) => {
-    smoothLineInstance.start({
+    instance.start({
       x: e.touches ? e.touches[0].clientX : e.offsetX,
       y: e.touches ? e.touches[0].clientY : e.offsetY,
-      touches: e.touches,
       t: Date.now(),
     });
   },
   onMove: (e) => {
-    smoothLineInstance.draw({
+    instance.draw({
       x: e.touches ? e.touches[0].clientX : e.offsetX,
       y: e.touches ? e.touches[0].clientY : e.offsetY,
-      touches: e.touches,
       t: Date.now(),
     });
   },
-  onEnd: smoothLineInstance.end,
+  onEnd: instance.end,
 });
 ```
 
