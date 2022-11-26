@@ -57,6 +57,10 @@ useMouseEvent({
 
 #### Demo
 
+[Live Demo](https://ckrw.gitee.io/smooth-line-example/)
+
 [Vue2 Demo](https://codesandbox.io/s/smooth-line-86qj3v?fontsize=14&hidenavigation=1&theme=dark)
+
 [Vue3 Demo](https://codesandbox.io/s/smooth-lint-vue3-example-o78wry)
+
 [React Demo](https://codesandbox.io/s/smooth-line-example-react-j5jnor)
